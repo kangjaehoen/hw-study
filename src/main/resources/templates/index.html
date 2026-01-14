@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[hw]day6-git</title>
+    <style>
+        .button-div-area{
+            margin-left : 50%
+        }
+    </style>
+</head>
+<body>
+<div class="button-div-area">
+    <h1>0</h1>
+    <button id="btn-num-plus">
+        클릭
+    </button>
+</div>
+</body>
+<script>
+    let index = document.querySelector('h1');
+    let indexNum = index.textContent;
+    const btn = document.getElementById('btn-num-plus');
+
+    btn.addEventListener('click',() => {
+        indexNum++;
+        index.textContent = indexNum;
+    });
+
+</script>
+</html>
