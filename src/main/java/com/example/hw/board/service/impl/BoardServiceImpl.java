@@ -1,5 +1,6 @@
 package com.example.hw.board.service.impl;
 
+import com.example.hw.board.dto.BoardDTO;
 import com.example.hw.board.mapper.BoardMapper;
 import com.example.hw.board.service.BoardService;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,12 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<Map<String,Object>> selectBoardList() {
         return boardMapper.selectBoardList();
+    }
+
+    @Override
+    public BoardDTO selectBoardDetail(int id) {
+        BoardDTO dto = boardMapper.selectBoardDetail(id);
+        System.out.println("boardDetail : dto : " +dto);
+        return dto;
     }
 }

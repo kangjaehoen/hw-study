@@ -9,12 +9,21 @@
         SELECT
             board_id,
             title,
+            writer,
+            created_at
+        FROM board
+        ORDER BY board_id DESC
+    </select>
+
+    <select id="selectBoardDetail" resultType="BoardDTO" parameterType="int">
+        SELECT
+            board_id,
+            title,
             content,
             writer,
             created_at,
             updated_at
         FROM board
-        ORDER BY board_id DESC
+        WHERE board_id = #{id}
     </select>
-
 </mapper>
