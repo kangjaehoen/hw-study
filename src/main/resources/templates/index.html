@@ -4,28 +4,46 @@
     <meta charset="UTF-8">
     <title>[hw]day6-git</title>
     <style>
-        .button-div-area{
+        .counter-container{
             margin-left : 50%
+        }
+
+        .board-container{
+            margin-left : 50%
+            margin-top : 30px;
         }
     </style>
 </head>
 <body>
-<div class="button-div-area">
+<div class="counter-container">
     <h1>0</h1>
-    <button id="btn-num-plus">
+    <button id="btn-num-add">
         클릭
     </button>
 </div>
+<div class="board-container">
+    <button id="btn-board-link">
+        게시판 보러가기
+    </button>
+</div>
+
 </body>
 <script>
     let index = document.querySelector('h1');
     let indexNum = index.textContent;
-    const btn = document.getElementById('btn-num-plus');
+    const btn = document.getElementById('btn-num-add');
 
     btn.addEventListener('click',() => {
         indexNum++;
         index.textContent = indexNum;
     });
+
+    let boardBtn = document.getElementById('btn-board-link');
+
+    boardBtn.addEventListener('click', () => {
+        window.location.href = 'board/list';
+    });
+
 
 </script>
 </html>
