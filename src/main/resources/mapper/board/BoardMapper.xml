@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hw.board.mapper.BoardMapper">
+
+    <select id="selectBoardList" resultType="map">
+        SELECT
+            board_id,
+            title,
+            content,
+            writer,
+            created_at,
+            updated_at
+        FROM board
+        ORDER BY board_id DESC
+    </select>
+
+</mapper>

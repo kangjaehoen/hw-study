@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 메인</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>자유게시판</h1>
+
+            </div>
+        </header>
+        <article>
+            <div>
+                <table>
+                    <thead>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>글쓴이</th>
+                        <th>작성일</th>
+                    </thead>
+                    <tbody id="board-list-body">
+                        <!-- ajax로 list 데이터 조회 후  -->
+                    </tbody>
+            </table>
+            </div>
+        </article>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+
+   $(function(){
+
+        $.ajax({
+            url: "/board/getBoardList",
+            type: "GET",
+            dataType :"json" ,
+            success : function(data){
+              let list = data.list;
+              let html = '';
+
+              console.log("데이터 확인 : " , list);
+              for(let i = 0;i<list.length;i++){
+                html +=
+                        `
+                        <tr>
+                               <td>${list[i].board_id}</td>
+                               <td>${list[i].title}</td>
+                               <td>${list[i].writer}</td>
+                               <td>${list[i].created_at}</td>
+                        </tr>
+                        `;
+              }
+               $("#board-list-body").html(html);
+                let trNum = $("#board-list-body tr");
+
+                 for(let i=0;i<trNum.length;i++){
+                    $(trNum[i]).on("click", function () {
+                        let boardId = $(this).children("td").eq(0).text();
+                        location.href = "/board/detail?id=" + boardId;
+                    });
+                 }
+            }
+        });
+   });
+
+</script>
+</html>
