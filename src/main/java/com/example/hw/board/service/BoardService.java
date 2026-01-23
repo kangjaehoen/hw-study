@@ -5,11 +5,10 @@ import com.example.hw.board.dto.BoardDTO;
 import java.util.List;
 import java.util.Map;
 
-
 public interface BoardService {
-    public List<Map<String, Object>> selectBoardList();
-    public BoardDTO selectBoardDetail(int id);
-    public int insertBoard(BoardDTO dto);
-    public int updateBoard(BoardDTO dto);
-    public int deleteBoard(Long boardId);
+    List<Map<String, Object>> selectBoardList();
+    BoardDTO selectBoardDetail(int id);
+    int insertBoard(BoardDTO dto);
+    int updateBoard(BoardDTO dto);
+    int deleteBoard(Long boardId);
 }

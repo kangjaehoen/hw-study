@@ -56,15 +56,20 @@
            }
 
            $.ajax({
-              url: "/board/delete/"+boardId,
+              url: "/api/board/delete/"+boardId,
               type: "DELETE",
+              dataType: "json",
               success: function(result){
-                  if(result == "success"){
+                  if(result.success){
                     alert("삭제완료되었습니다.");
                     location.href="/board/main";
                   }else{
-                    alert("삭제하는 것을 실패하였습니다.");
+                    alert(result.message || "삭제하는 것을 실패하였습니다.");
                   }
+              },
+              error: function(xhr, status, error) {
+                console.error("Error deleting board:", error);
+                alert("삭제 중 오류가 발생했습니다.");
               }
            });
         });

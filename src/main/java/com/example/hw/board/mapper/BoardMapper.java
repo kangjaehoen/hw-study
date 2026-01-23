@@ -8,9 +8,9 @@ import java.util.Map;
 
 @Mapper
 public interface BoardMapper {
-    public List<Map<String,Object>> selectBoardList();
-    public BoardDTO selectBoardDetail(int id);
-    public int insertBoard(BoardDTO dto);
-    public int updateBoard(BoardDTO dto);
-    public Long deleteBoard(Long boardId);
+    List<Map<String,Object>> selectBoardList();
+    BoardDTO selectBoardDetail(int id);
+    int insertBoard(BoardDTO dto);
+    int updateBoard(BoardDTO dto);
+    int deleteBoard(Long boardId);
 }

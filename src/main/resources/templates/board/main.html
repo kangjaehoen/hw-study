@@ -42,34 +42,42 @@
    $(function(){
 
         $.ajax({
-            url: "/board/getBoardList",
+            url: "/api/board/getBoardList",
             type: "GET",
             dataType :"json" ,
             success : function(data){
-              let list = data.list;
-              let html = '';
+              if(data.success && data.list){
+                let list = data.list;
+                let html = '';
 
-              console.log("데이터 확인 : " , list);
-              for(let i = 0;i<list.length;i++){
-                html +=
-                        `
-                        <tr>
-                               <td>${list[i].board_id}</td>
-                               <td>${list[i].title}</td>
-                               <td>${list[i].writer}</td>
-                               <td>${list[i].created_at}</td>
-                        </tr>
-                        `;
+                console.log("데이터 확인 : " , list);
+                for(let i = 0;i<list.length;i++){
+                  html +=
+                          `
+                          <tr>
+                                 <td>${list[i].board_id}</td>
+                                 <td>${list[i].title}</td>
+                                 <td>${list[i].writer}</td>
+                                 <td>${list[i].created_at}</td>
+                          </tr>
+                          `;
+                }
+                 $("#board-list-body").html(html);
+                  let trNum = $("#board-list-body tr");
+
+                   for(let i=0;i<trNum.length;i++){
+                      $(trNum[i]).on("click", function () {
+                          let boardId = $(this).children("td").eq(0).text();
+                          location.href = "/board/detail?id=" + boardId;
+                      });
+                   }
+              } else {
+                alert("게시글 목록을 불러오는데 실패했습니다.");
               }
-               $("#board-list-body").html(html);
-                let trNum = $("#board-list-body tr");
-
-                 for(let i=0;i<trNum.length;i++){
-                    $(trNum[i]).on("click", function () {
-                        let boardId = $(this).children("td").eq(0).text();
-                        location.href = "/board/detail?id=" + boardId;
-                    });
-                 }
+            },
+            error: function(xhr, status, error) {
+              console.error("Error fetching board list:", error);
+              alert("게시글 목록을 불러오는 중 오류가 발생했습니다.");
             }
         });
 

@@ -40,7 +40,7 @@
 
     <delete id="deleteBoard" parameterType="Long">
         DELETE FROM board
-        WHERE board_id=#{boardId}
+        WHERE board_id = #{boardId}
     </delete>
 
 </mapper>
