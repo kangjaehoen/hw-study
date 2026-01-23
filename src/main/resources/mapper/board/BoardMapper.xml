@@ -26,4 +26,9 @@
         FROM board
         WHERE board_id = #{id}
     </select>
+
+    <insert id="insertBoard" parameterType="BoardDTO">
+        INSERT INTO board(title, content, writer)
+        VALUES (#{title}, #{content}, #{writer})
+    </insert>
 </mapper>

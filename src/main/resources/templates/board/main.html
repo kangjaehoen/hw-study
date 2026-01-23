@@ -13,7 +13,9 @@
         <header>
             <div>
                 <h1>자유게시판</h1>
-
+            </div>
+            <div>
+                <button id="btn-writer">게시판 등록</button>
             </div>
         </header>
         <article>
@@ -69,6 +71,10 @@
                     });
                  }
             }
+        });
+
+        $("#btn-writer").on("click", function (){
+            window.location.href='/board/write';
         });
    });
 

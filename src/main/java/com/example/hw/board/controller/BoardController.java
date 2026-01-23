@@ -1,12 +1,11 @@
 package com.example.hw.board.controller;
 
 
+import com.example.hw.board.dto.BoardDTO;
 import com.example.hw.board.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -29,5 +28,20 @@ public class BoardController {
         model.addAttribute("detail", boardService.selectBoardDetail(id));
         return "board/detail";
     }
+
+    @GetMapping("/write")
+    public String boardWritePage(){
+        return "board/write";
+    }
+
+    @PostMapping("/insert")
+    public String boardInsert(BoardDTO dto){
+        int num = boardService.insertBoard(dto);
+        if(num>0){
+            System.out.println("insert success");
+        }
+        return "redirect:/board/main";
+    }
+
 
 }

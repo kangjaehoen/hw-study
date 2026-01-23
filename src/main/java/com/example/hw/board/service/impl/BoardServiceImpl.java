@@ -28,4 +28,10 @@ public class BoardServiceImpl implements BoardService {
         System.out.println("boardDetail : dto : " +dto);
         return dto;
     }
+
+    @Override
+    public int insertBoard(BoardDTO dto) {
+        int num = boardMapper.insertBoard(dto);
+        return num;
+    }
 }
