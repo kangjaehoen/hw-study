@@ -23,8 +23,10 @@ public class BoardController {
     }
 
     @GetMapping("/main")
-    public String boardMain() {
+    public String boardMain(Model model) {
         logger.debug("Accessing board main page");
+        // 서버에서 게시글 목록을 가져와서 모델에 추가
+        model.addAttribute("boardList", boardService.selectBoardList());
         return "board/main";
     }
 
