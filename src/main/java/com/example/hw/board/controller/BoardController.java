@@ -43,5 +43,18 @@ public class BoardController {
         return "redirect:/board/main";
     }
 
+    @GetMapping("/edit")
+    public String boardEditePage(@RequestParam int id, Model model){
+        model.addAttribute("detail", boardService.selectBoardDetail(id));
+        return "board/edit";
+    }
 
+    @PostMapping("/update")
+    public String boardUpdate(BoardDTO dto) throws Exception {
+        int num = boardService.updateBoard(dto);
+            if(num <= 0){
+                throw new Exception("update error");
+            }
+        return "redirect:/board/detail?id="+dto.getBoardId();
+    }
 }

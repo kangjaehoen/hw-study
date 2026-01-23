@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>게시판 세부</title>
     <Style>
         .board-edit{
             margin-top : 30px;
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="board-edit">
-        <button id="btn-board-update">
+        <button id="btn-board-update" th:data-id="${detail.boardId}">
             수정하기
         </button>
         <button id="btn-board-delete">
@@ -36,7 +36,18 @@
         </button>
     </div>
 </body>
-<script>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function(){
+
+        let boardId = $("#btn-board-update").data("id");
+
+        $("#btn-board-update").on('click', function(){
+            window.location.href="/board/edit?id="+boardId;
+        });
+
+
+    });
 </script>
 </html>

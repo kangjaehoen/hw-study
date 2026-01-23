@@ -11,5 +11,5 @@ public interface BoardMapper {
     public List<Map<String,Object>> selectBoardList();
     public BoardDTO selectBoardDetail(int id);
     public int insertBoard(BoardDTO dto);
-
+    public int updateBoard(BoardDTO dto);
 }

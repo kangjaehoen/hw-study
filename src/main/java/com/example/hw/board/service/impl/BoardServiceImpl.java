@@ -34,4 +34,10 @@ public class BoardServiceImpl implements BoardService {
         int num = boardMapper.insertBoard(dto);
         return num;
     }
+
+    @Override
+    public int updateBoard(BoardDTO dto) {
+        int num = boardMapper.updateBoard(dto);
+        return num;
+    }
 }
