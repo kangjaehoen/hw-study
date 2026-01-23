@@ -11,4 +11,5 @@ public interface BoardService {
     public BoardDTO selectBoardDetail(int id);
     public int insertBoard(BoardDTO dto);
     public int updateBoard(BoardDTO dto);
+    public int deleteBoard(Long boardId);
 }

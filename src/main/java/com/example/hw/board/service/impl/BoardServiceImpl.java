@@ -40,4 +40,10 @@ public class BoardServiceImpl implements BoardService {
         int num = boardMapper.updateBoard(dto);
         return num;
     }
+
+    @Override
+    public int deleteBoard(Long boardId) {
+        Long num = boardMapper.deleteBoard(boardId);
+        return Math.toIntExact(num);
+    }
 }

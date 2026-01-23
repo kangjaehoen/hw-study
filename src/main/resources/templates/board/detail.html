@@ -48,6 +48,26 @@
         });
 
 
-    });
+        $("#btn-board-delete").on('click', function(){
+           let chk = confirm("정말 삭제하시겠습니까?");
+
+           if(chk == false){
+                return;
+           }
+
+           $.ajax({
+              url: "/board/delete/"+boardId,
+              type: "DELETE",
+              success: function(result){
+                  if(result == "success"){
+                    alert("삭제완료되었습니다.");
+                    location.href="/board/main";
+                  }else{
+                    alert("삭제하는 것을 실패하였습니다.");
+                  }
+              }
+           });
+        });
+   });
 </script>
 </html>

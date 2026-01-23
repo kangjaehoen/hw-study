@@ -12,4 +12,5 @@ public interface BoardMapper {
     public BoardDTO selectBoardDetail(int id);
     public int insertBoard(BoardDTO dto);
     public int updateBoard(BoardDTO dto);
+    public Long deleteBoard(Long boardId);
 }

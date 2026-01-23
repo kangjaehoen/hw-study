@@ -37,4 +37,10 @@
         SET title=#{title}, content=#{content}
         WHERE board_id=#{boardId}
     </update>
+
+    <delete id="deleteBoard" parameterType="Long">
+        DELETE FROM board
+        WHERE board_id=#{boardId}
+    </delete>
+
 </mapper>
